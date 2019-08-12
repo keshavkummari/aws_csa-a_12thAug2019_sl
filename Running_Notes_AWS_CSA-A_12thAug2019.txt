@@ -1,0 +1,103 @@
+#-------------------------------------------------------------#
+# Breaks : 
+#-------------------------------------------------------------#
+2 Breaks - 10Minutes @ 1hr 
+
+8pm IST 
+
+9pm IST   : 10 minutes
+
+10pm IST  : 10 Minutes 
+
+11pm IST 
+
+
+#-------------------------------------------------------------#
+Prerequisites : Cloud Engineer : CSA, SYSOpS, Dev, DevOps, etc...
+
+1. System & Networking Administration : Windows|Unix|Linux 
+
+    1. GUI : A file or A Folder or A Configuration or A Server Start etc...
+    2. CUI : A file or A Folder or A Configuration or A Server Start etc...
+    3. SCRIPTS : Windows(Power Shell) , Linux/Unix(Bash Shell Script) , Python 
+
+Download, Install, Configure and Monitor, if there are any issues, Troubleshooting 
+
+
+2. Cloud i.e. AWS or Azure or GCP :
+
+AWS : Training and Certifications :
+
+    1. GUI : A file or A Folder or A Configuration or A Server Start etc...
+    2. CUI : A file or A Folder or A Configuration or A Server Start etc...
+    3. SCRIPTS : Windows(Power Shell) , Linux/Unix(Bash Shell Script) , Python 
+
+Download, Install, Configure and Monitor, if there are any issues, Troubleshooting 
+
+3. Programming : Python 
+
+4. DevOps CI/CD Pipelines 
+
+Cloud, DevOps & Programming : Full Stack Engineer 
+#-------------------------------------------------------------#
+
+LMS :
+
+Lab : Simplilearn AWS Lab :
+
+    2 Types of Users :
+
+        1. Root User : 
+            URL : https://aws.amazon.com 
+        UserName: firstname.lastname@gmail.com
+        PassWord: ********
+
+        2. IAM User :
+            URL : https://simplilearn.aws.amazon.com 
+        
+        Account ID/Name : simplilearn or 10202383837
+        UserName        : UserName 
+        PassWord        : ********
+
+#-------------------------------------------------------------#
+
+github.com 
+
+https://github.com 
+
+Gmail or Email id's 
+
+aws_csa-a_12thAug2019_sl
+#-------------------------------------------------------------#
+
+My System :
+
+MacOS : 
+
+1. Text Editors : ATOM (https://atom.io/)
+
+2. IDE Tools    : Visual Studio Code (https://code.visualstudio.com/download)
+
+3. MacOS|Windows|Linux : gitbash (https://git-scm.com/)
+
+4. aws cli : https://docs.aws.amazon.com/cli/latest/userguide/install-windows.html
+
+5. aws personal account : https://aws.amazon.com
+
+6. For Architectures : https://cloudcraft.co/app
+
+7. VCS/SCM  : https://github.com
+
+#-------------------------------------------------------------#
+
+36-hrs AWS CSA - Associate 
+
+What is Cloud Computing ?
+
+Simply put, cloud computing is the delivery of computing services—including servers, 
+storage, databases, networking, software, analytics, and intelligence—over the Internet (“the cloud”) 
+to offer faster innovation, flexible resources, and economies of scale. 
+You typically pay only for cloud services you use, helping lower your operating costs, run your infrastructure more efficiently and scale as your business needs change.
+
+
+#-------------------------------------------------------------#
