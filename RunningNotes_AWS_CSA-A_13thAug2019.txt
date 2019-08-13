@@ -1,0 +1,114 @@
+
+Agenda : 
+
+What is cloud computing?
+
+Simply put, cloud computing is the delivery of computing services—including 
+servers, storage, databases, networking, software, analytics, and intelligence—over the 
+Internet (“the cloud”) to offer faster innovation, flexible resources, and 
+economies of scale. 
+
+You typically pay only for cloud services you use, 
+helping lower your operating costs, run your infrastructure more 
+efficiently and scale as your business needs change.
+
+
+Top benefits of cloud computing?
+
+1. Cost : 
+
+I am a Trainer / Online Shoping Store : www.keshavkummari.com
+
+2. Go Global & Scale My resource 
+
+3. Performance 
+
+4. Security 
+
+5. Speed 
+
+6. Productivity 
+
+7. Reliability 
+
+
+Types of cloud computing ?
+
+1. Public Cloud :
+
+Public clouds are the most common way of deploying cloud computing. The cloud resources (like servers and storage) are owned and operated by a third-party cloud service provider and delivered over the Internet.
+
+With a public cloud, all hardware, software and other supporting infrastructure is owned and managed by the cloud provider.
+
+In a public cloud, you share the same hardware, storage and network devices with other organisations or cloud “tenants.”
+
+You access services and manage your account using a web browser. 
+
+Public cloud deployments are frequently used to provide web-based email, online office applications, storage and testing and development environments.
+
+
+2. Private Cloud 
+
+3. Hybrid Cloud 
+
+Types of cloud services: IaaS, PaaS, serverless and SaaS
+
+1. IaaS : 
+
+
+
+
+
+AWS :
+
+Root or Normal User :
+
+1. Regions :  22 
+2. Availablity Zones : 69 (Availablity Zones = Data Centers)
+
+3. VPC : Default VPC & Custom VPC 
+
+
+
+https://kkit.signin.aws.amazon.com/console
+
+  2 Types of Users :
+
+        1. Root User : 
+            URL : https://aws.amazon.com 
+        UserName: firstname.lastname@gmail.com
+        PassWord: ********
+
+        2. IAM User :
+            URL : https://simplilearnk.signin.aws.amazon.com/console 
+        
+        Account ID/Name : simplilearnk 
+        UserName        : keshavkummari
+        PassWord        : ********
+
+
+STEP-1 : 
+AWS Mgmt Console : 
+
+https://simplilearnk.signin.aws.amazon.com/console
+
+        Account ID/Name : simplilearnk 
+        UserName        : keshavkummari
+        PassWord        : 
+    
+STEP-2 : Programmatic Access :
+
+windows >> awscli 
+
+gitbash >> 
+
+aws --version 
+
+aws configure --profile keshavkummari
+
+Access key ID     : AKIAZF6PXTEW6K6BQV4C
+Secret access key : 
+Region            : us-east-1 
+Output Type       : Json, Text, Table 
+
+
