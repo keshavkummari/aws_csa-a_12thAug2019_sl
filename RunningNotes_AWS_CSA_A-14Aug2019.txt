@@ -1,0 +1,48 @@
+Agenda : 
+
+
+1. VPC :
+
+    Components :
+#------------------------------------------------------------------------#
+VPC Objects :
+#------------------------------------------------------------------------#
+1. Subnets
+2. Security Groups
+3. Network ACLs
+4. NAT Gateway 
+5. Internet Gateways
+6. Route Tables
+7. Bastion 
+8. BootStrap - Deploy WebSite 
+
+Ansari - KK IT 
+
+1. Securty 
+2. Reliability 
+3. Performance Efficiency 
+4. Cost Optimization
+5. Operational Excellence 
+
+#------------------------------------------------------------------------#
+CLIENT : BMW
+
+bmw.it.india.com
+
+Move or Migrate On-premises to Cloud :
+
+Region : NV (6 AZ's)
+#------------------------------------------------------------------------#
+
+#------------------------------------------------------------------------#
+CLIENT : AUDI 
+
+Region : NV (6 AZ's)
+
+
+#------------------------------------------------------------------------#
+
+
+
+STEP-1 : BMW_VPC
+
