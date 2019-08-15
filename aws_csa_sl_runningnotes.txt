@@ -1,0 +1,43 @@
+
+
+User Data :
+
+#!/bin/bash
+cd /opt/
+yum install wget* curl* vim* unzip* -y
+yum update -y
+wget https://www.free-css.com/assets/files/free-css-templates/download/page231/bizexpress-v1.0.1.zip
+unzip *.zip
+cd Biz*
+yum install http* --skip-broken -y
+mv * /var/www/html/
+service httpd start
+
+
+1. Choose AMI                   : Amazon Linux 2 
+
+2. Choose Instance Type
+
+3. Configure Instance
+
+4. Add Storage
+
+5. Add Tags
+
+6. Configure Security Group
+
+7. Review
+
+Amazon Linux, CentOS, Redhat, Fedora, etc... (Username : ec2-user)
+
+Hostname / Ipaddress:  Bastion Server 9.0.2.0 
+UserName : ec2-user 
+Password : SSH-keys (Public Key and Private Keys)
+
+# yum install vim  & rpm 
+
+Ubuntu : (Username : ubuntu)
+apt install vim  or apt-get install vim 
+
+Windows(Username : Administrator) 
+
