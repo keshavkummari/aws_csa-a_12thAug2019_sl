@@ -1,0 +1,440 @@
+
+
+VPC : BMW 
+
+1. IGW 
+2. Router - Public and Private
+3. Subnets - 6 (2 Public and 4 Private)
+4. NAT Gateway - @Public Subnet-2
+5. NACL
+6. Security Group
+7. Bastion Server - Linux @ Public Subnet-1
+8. EC2 instance - Private Subnet-1
+
+
+VPC : AUDI 
+
+1. IGW 
+2. Router - Public and Private
+3. Subnets - 6 (2 Public and 4 Private)
+4. NAT Gateway - @Public Subnet-2
+5. NACL
+6. Security Group
+7. Bastion Server - Linux @ Public Subnet-1
+8. EC2 instance - Private Subnet-1
+
+ELB :
+
+Elastic Load Balancing
+Achieve fault tolerance for any application by ensuring scalability, performance, and security.
+
+
+(base) Keshavs-MacBook-Pro:Downloads keshavkummari$ pwd
+/Users/keshavkummari/Downloads
+(base) Keshavs-MacBook-Pro:Downloads keshavkummari$ 
+(base) Keshavs-MacBook-Pro:Downloads keshavkummari$ ls -lrt nvirginia.pem 
+-r--------@ 1 keshavkummari  staff  1692 Aug 16 06:26 nvirginia.pem
+(base) Keshavs-MacBook-Pro:Downloads keshavkummari$ 
+(base) Keshavs-MacBook-Pro:Downloads keshavkummari$ ssh -i "nvirginia.pem" ec2-user@3.84.19.42
+The authenticity of host '3.84.19.42 (3.84.19.42)' can't be established.
+ECDSA key fingerprint is SHA256:/NC88j3m8ijrx8mKbgbtTgUkFHdDH9UoTB5Ge4tDqkE.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '3.84.19.42' (ECDSA) to the list of known hosts.
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+4 package(s) needed for security, out of 12 available
+Run "sudo yum update" to apply all updates.
+-bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8): No such file or directory
+[ec2-user@ip-10-0-1-35 ~]$ 
+[ec2-user@ip-10-0-1-35 ~]$ sudo hostnamectl set-hostname "bastion.bmw.com"
+[ec2-user@ip-10-0-1-35 ~]$ /bin/bash
+[ec2-user@bastion ~]$ hostname
+bastion.bmw.com
+[ec2-user@bastion ~]$ ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 10.0.1.35  netmask 255.255.255.0  broadcast 10.0.1.255
+        inet6 fe80::10ec:50ff:fed8:99a4  prefixlen 64  scopeid 0x20<link>
+        ether 12:ec:50:d8:99:a4  txqueuelen 1000  (Ethernet)
+        RX packets 37749  bytes 54665809 (52.1 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 5773  bytes 358806 (350.3 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 8  bytes 648 (648.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 8  bytes 648 (648.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[ec2-user@bastion ~]$ 
+[ec2-user@bastion ~]$ # 10.0.1.35 bastion.bmw.com 
+[ec2-user@bastion ~]$ sudo vi /etc/hosts
+[ec2-user@bastion ~]$ 
+[ec2-user@bastion ~]$ cat /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost6 localhost6.localdomain6
+
+10.0.1.35 bastion.bmw.com
+[ec2-user@bastion ~]$ 
+[ec2-user@bastion ~]$ sudo echo "10.0.1.35 bastion.bmw.com" >> /etc/hosts
+bash: /etc/hosts: Permission denied
+[ec2-user@bastion ~]$ 
+[ec2-user@bastion ~]$ sudo echo "10.0.1.35 bastion.bmw.com" >> /etc/hosts
+bash: /etc/hosts: Permission denied
+[ec2-user@bastion ~]$ sudo su
+[root@bastion ec2-user]# echo "10.0.1.35 bastion.bmw.com" >> /etc/hosts
+[root@bastion ec2-user]# 
+[root@bastion ec2-user]# cat /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost6 localhost6.localdomain6
+
+10.0.1.35 bastion.bmw.com
+10.0.1.35 bastion.bmw.com
+[root@bastion ec2-user]# exit
+exit
+[ec2-user@bastion ~]$ 
+[ec2-user@bastion ~]$ history
+    1  hostname
+    2  ifconfig
+    3  # 10.0.1.35 bastion.bmw.com 
+    4  sudo vi /etc/hosts
+    5  cat /etc/hosts
+    6  sudo echo "10.0.1.35 bastion.bmw.com" >> /etc/hosts
+    7  sudo su
+    8  history
+[ec2-user@bastion ~]$ 
+
+
+
+Last login: Fri Aug 16 20:30:12 on ttys002
+(base) Keshavs-MacBook-Pro:Downloads keshavkummari$ pwd
+/Users/keshavkummari/Downloads
+(base) Keshavs-MacBook-Pro:Downloads keshavkummari$ ssh -i "nvirginia.pem" ec2-user@3.86.81.4
+The authenticity of host '3.86.81.4 (3.86.81.4)' can't be established.
+ECDSA key fingerprint is SHA256:XJoqiRPOEYombRkWVZ28vCjGVvs23zwhng+K33yfmfc.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '3.86.81.4' (ECDSA) to the list of known hosts.
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+4 package(s) needed for security, out of 12 available
+Run "sudo yum update" to apply all updates.
+-bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8): No such file or directory
+[ec2-user@ip-192-168-1-40 ~]$ sudo hostnamectl set-hostname "bastion.audi.com"
+[ec2-user@ip-192-168-1-40 ~]$ /bin/bash
+[ec2-user@bastion ~]$ 
+[ec2-user@bastion ~]$ hostnme
+bash: hostnme: command not found
+[ec2-user@bastion ~]$ hostname
+bastion.audi.com
+[ec2-user@bastion ~]$ ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 192.168.1.40  netmask 255.255.255.0  broadcast 192.168.1.255
+        inet6 fe80::104c:11ff:fe3e:2872  prefixlen 64  scopeid 0x20<link>
+        ether 12:4c:11:3e:28:72  txqueuelen 1000  (Ethernet)
+        RX packets 38416  bytes 54876275 (52.3 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2405  bytes 166112 (162.2 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 8  bytes 648 (648.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 8  bytes 648 (648.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[ec2-user@bastion ~]$ # 192.168.1.40 bastion.audi.com 
+[ec2-user@bastion ~]$ 
+[ec2-user@bastion ~]$ cat /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost6 localhost6.localdomain6
+[ec2-user@bastion ~]$ sudo vi /etc/hosts
+[ec2-user@bastion ~]$ 
+[ec2-user@bastion ~]$ pwd
+/home/ec2-user
+[ec2-user@bastion ~]$ hostname
+bastion.audi.com
+[ec2-user@bastion ~]$ touch nvirginia.pem
+[ec2-user@bastion ~]$ 
+[ec2-user@bastion ~]$ ls -lrt
+total 0
+-rw-rw-r-- 1 ec2-user ec2-user 0 Aug 16 15:11 nvirginia.pem
+[ec2-user@bastion ~]$ vi nvirginia.pem 
+[ec2-user@bastion ~]$ pwd
+/home/ec2-user
+[ec2-user@bastion ~]$ ls -lrt
+total 4
+-rw-rw-r-- 1 ec2-user ec2-user 1671 Aug 16 15:12 nvirginia.pem
+[ec2-user@bastion ~]$ cat nvirginia.pem 
+-----BEGIN RSA PRIVATE KEY-----
+MIIEowIBAAKCAQEAsGAfq8l52kP71m48LH0eVsXeO38urqVG0HncNh+Ik2N2ehKTXX3pj99lFaql
+hSlusvvxgH+Tny7E6KLnOpJdsxmGepGMErCTox8Tk/eFz1dce616Tr6ZUWqvaAJGihJoHKoFBz79
+LE/NGpbUyQ5AIInDmjTZxLaf4Rys3R/ERuzFT2RBKDEEcdA7vWbo6ue3S+5LNEjAWYqvMfIb60nH
+a3jMBSvDNTR60AhdDr8ySE0dIJgRDL1EvvSwEmf1gPeZqnorhEb7YZBp+7etyyRC7FK3r0qqbhX2
+ZiITGTfD5NhgmsEGnV/qgTYwUuxRNiZ6Fd9EXorQWYknMuDNJ8wlJwIDAQABAoIBAGW9/WcOYRFM
+eEDY9DNBtbeeirTNh/NM+g2WzjYWeKV1EcoXXxTmZk4NMvWNq8+l9+qdtVFHxrNjukjsd/BssEp5
+Zf7caO37GB9X9OY9Od5CaeIaT1yPTEgP/8FC1sgdGBu45A+rAUaHfixhZ7vXUZyze7c/14NHSfEE
+pp8kDQhP5HY8sFuh2NMSVM/pulwXgePt7BmHdkzLNsSycMs7Y4GwHEsIzmAF3dBYD++CoGZWWHU/
+3zJ0tBlXMiSG1P7eCfCcQMAkkJ6UF6hUXAH/G2MlzvRcUWAuX6EgJrAM7lhajNPEHmeJIf1NIe9m
+Qo0FkbmRHpq28zZ786Hye3KINukCgYEA7Dw4lU8586XTUCh3Ema3VLJkqoXian4j7l73L0pTphts
+J5Md2f0TiIBOE0hK4K5dBDkqArBGS9iklJlAh/yAHmxDqE4tYhr0CmLwfBGxPWy3Dfnu+I9oaplx
+cAmCLu4lzHLc2+vBWx2EvSkpFWToNnSVtWff58TUzDl6soimxGsCgYEAvyHNj/ytVVwX2Emxrf8S
+74U3oxUE98OYg4q2W9BQXsA1uA4ZJG5jSDpbfaRH9ydGuIpOBETw3uV91uEA2LT94OTMrwVV6/L/
+RxZpTAzJV9bb0rPW6ZcCU+PSvyl/g8u2VDdg1l6aUUp+yIB8LgBb8GLM1o+KD12Yn/o3qWhHMTUC
+gYANZfj7luu9gukyQalHNOYu+pM1DLTjv1XAXkh8uSV3ZVTEBdcKlwz1j/ldpJsClUEXTTqxvleu
+U5I6D1sWm16U2yUXNZ/jUY4HzMbA8qvvxOu48jT4igGtEhjZ9uAYU093ggg+vOdRiKIPrHb1DK0S
+8ZfQGx0a4xICpzvrRk7XEwKBgQCVMbi5PX68E+AVGClW7bYFO9LbPSwcjxS9EYkZkDk8TQNhwbeE
+hZqAJfWG1LbMSV9d66/Mi1gOVctt8ULs5hMK+u5/bEXOoWb9QZQ+JfkA1RnQlksbGaJag4rdZ3I/
+GcQgZv3zN/NzoxfmQM0uR198/FJy5abaKbBaqEHMvjZcRQKBgBUAUhn/SHoD5p7rkjSwkH7dTgo2
+EKZ7B2p5wcSh2tWvUEQS8+r+YCW76l83tjC2yCGFsgchIEuEuUxV1TfEz1yAw7n84VCne+qCoT20
+E0ImNv4V4KppQ1Dw0SyImP9A90F1jCPnmzkSk3+4e6xyOSqaHgzTxD2yo69130VOzFoq
+-----END RSA PRIVATE KEY-----
+[ec2-user@bastion ~]$ 
+[ec2-user@bastion ~]$ ls -lrt
+total 4
+-rw-rw-r-- 1 ec2-user ec2-user 1671 Aug 16 15:12 nvirginia.pem
+[ec2-user@bastion ~]$ chmod 400 nvirginia.pem 
+[ec2-user@bastion ~]$ ls -lrt
+total 4
+-r-------- 1 ec2-user ec2-user 1671 Aug 16 15:12 nvirginia.pem
+[ec2-user@bastion ~]$ hostname
+bastion.audi.com
+[ec2-user@bastion ~]$ ssh -i "nvirginia.pem" ec2-user@192.168.3.147
+The authenticity of host '192.168.3.147 (192.168.3.147)' can't be established.
+ECDSA key fingerprint is SHA256:xsQeUuWCe11oUpFmgwgDZaigIg4vaMAQqUQ/hdSC2Ic.
+ECDSA key fingerprint is MD5:58:4f:5f:32:d5:9b:e0:73:95:3e:4e:e4:f7:a8:63:66.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.168.3.147' (ECDSA) to the list of known hosts.
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+[ec2-user@ip-192-168-3-147 ~]$ 
+[ec2-user@ip-192-168-3-147 ~]$ elinks
+-bash: elinks: command not found
+[ec2-user@ip-192-168-3-147 ~]$ 
+[ec2-user@ip-192-168-3-147 ~]$ sudo yum install elinks
+Failed to set locale, defaulting to C
+Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
+Resolving Dependencies
+--> Running transaction check
+---> Package elinks.x86_64 0:0.12-0.57.pre6.amzn2.0.2 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=============================================================================================================================================
+ Package                     Arch                        Version                                       Repository                       Size
+=============================================================================================================================================
+Installing:
+ elinks                      x86_64                      0.12-0.57.pre6.amzn2.0.2                      amzn2-core                      868 k
+
+Transaction Summary
+=============================================================================================================================================
+Install  1 Package
+
+Total download size: 868 k
+Installed size: 2.5 M
+Is this ok [y/d/N]: y
+Downloading packages:
+elinks-0.12-0.57.pre6.amzn2.0.2.x86_64.rpm                                                                            | 868 kB  00:00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : elinks-0.12-0.57.pre6.amzn2.0.2.x86_64                                                                                    1/1 
+  Verifying  : elinks-0.12-0.57.pre6.amzn2.0.2.x86_64                                                                                    1/1 
+
+Installed:
+  elinks.x86_64 0:0.12-0.57.pre6.amzn2.0.2                                                                                                   
+
+Complete!
+[ec2-user@ip-192-168-3-147 ~]$ 
+[ec2-user@ip-192-168-3-147 ~]$ 
+[ec2-user@ip-192-168-3-147 ~]$ 
+[ec2-user@ip-192-168-3-147 ~]$ 
+[ec2-user@ip-192-168-3-147 ~]$ pwd
+/home/ec2-user
+[ec2-user@ip-192-168-3-147 ~]$ ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 192.168.3.147  netmask 255.255.255.0  broadcast 192.168.3.255
+        inet6 fe80::10bc:4aff:fe08:7950  prefixlen 64  scopeid 0x20<link>
+        ether 12:bc:4a:08:79:50  txqueuelen 1000  (Ethernet)
+        RX packets 164060  bytes 238356918 (227.3 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 5805  bytes 446080 (435.6 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 8  bytes 648 (648.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 8  bytes 648 (648.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[ec2-user@ip-192-168-3-147 ~]$ 
+[ec2-user@ip-192-168-3-147 ~]$ elinks 192.168.3.147
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                                           Biz Express (1/9) 
+   Toggle navigation  logo                                                                                                                   
+                                                                                                                                             
+     * Home                                                                                                                                  
+     * Service                                                                                                                               
+     * Portfolio                                                                                                                             
+     * Team                                                                                                                                  
+     * Price                                                                                                                                 
+     * Blog                                                                                                                                  
+     * Testimonial                                                                                                                           
+     * Contact                                                                                                                               
+                                                                                                                                             
+                                                    Clean and Flexible Business Template                                                     
+                                                                                                                                             
+                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod                                   
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,                                 
+                                                                                                                                             
+                                                  ┌──────────────────────────────────────┐                                                   
+                                                  │                                      │                                                   
+                                                  │  Do you really want to exit ELinks?  │                                                   
+                                                  │                                      │                                                   
+                                  Lorem ipsum d   │           [ Yes ]  [ No ]            │   ed do eiusmod                                   
+                                tempor incididu   └──────────────────────────────────────┘   d minim veniam,                                 
+                                                                                                                                             
+                                                                Find Out More                                                                
+                                                                                                                                             
+                                                                Our Services                                                                 
+                                                                                                                                             
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut                        
+                                               et dolore magna aliqua. Ut enim ad minim veniam                                               
+                                                                                                                                             
+   img                                                                                                                                       
+                                                                                                                                             
+    Responsive Design                                                                                                                        
+                                                                                                                                             
+   Lorem ipsum dolor sit amet, consectetur ing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim     
+   Lorem ipsum dolor sit amet, consectetur adipis ing elit, sed do eiusmod .                                                                 
+                                                                                                                                             
+   img                                                                                                                                       
+Harmless button                                                                                                                     [------]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[ec2-user@ip-192-168-3-147 ~]$ top
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+top - 15:15:10 up 5 min,  1 user,  load average: 0.03, 0.23, 0.14
+Tasks:  93 total,   1 running,  55 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem :  1007332 total,   214012 free,    66336 used,   726984 buff/cache
+KiB Swap:        0 total,        0 free,        0 used.   738632 avail Mem 
+
+  PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND                                                                  
+    1 root      20   0  125732   5532   4012 S  0.0  0.5   0:01.70 systemd                                                                  
+    2 root      20   0       0      0      0 S  0.0  0.0   0:00.00 kthreadd                                                                 
+    3 root      20   0       0      0      0 I  0.0  0.0   0:00.05 kworker/0:0                                                              
+    4 root       0 -20       0      0      0 I  0.0  0.0   0:00.00 kworker/0:0H                                                             
+    5 root      20   0       0      0      0 I  0.0  0.0   0:00.01 kworker/u30:0                                                            
+    6 root       0 -20       0      0      0 I  0.0  0.0   0:00.00 mm_percpu_wq                                                             
+    7 root      20   0       0      0      0 S  0.0  0.0   0:00.16 ksoftirqd/0                                                              
+    8 root      20   0       0      0      0 I  0.0  0.0   0:01.06 rcu_sched                                                                
+    9 root      20   0       0      0      0 I  0.0  0.0   0:00.00 rcu_bh                                                                   
+   10 root      rt   0       0      0      0 S  0.0  0.0   0:00.00 migration/0                                                              
+   11 root      rt   0       0      0      0 S  0.0  0.0   0:00.00 watchdog/0                                                               
+   12 root      20   0       0      0      0 S  0.0  0.0   0:00.00 cpuhp/0                                                                  
+   13 root      20   0       0      0      0 S  0.0  0.0   0:00.00 kdevtmpfs                                                                
+   14 root       0 -20       0      0      0 I  0.0  0.0   0:00.00 netns                                                                    
+   15 root      20   0       0      0      0 I  0.0  0.0   0:00.13 kworker/u30:1                                                            
+   20 root      20   0       0      0      0 S  0.0  0.0   0:00.00 xenbus                                                                   
+   21 root      20   0       0      0      0 S  0.0  0.0   0:00.01 xenwatch                                                                 
+  171 root      20   0       0      0      0 S  0.0  0.0   0:00.00 khungtaskd                                                               
+  172 root      20   0       0      0      0 S  0.0  0.0   0:00.00 oom_reaper                                                               
+  173 root       0 -20       0      0      0 I  0.0  0.0   0:00.00 writeback                                                                
+  175 root      20   0       0      0      0 S  0.0  0.0   0:00.00 kcompactd0                                                               
+  176 root      25   5       0      0      0 S  0.0  0.0   0:00.00 ksmd                                                                     
+  177 root      39  19       0      0      0 S  0.0  0.0   0:00.00 khugepaged                                                               
+  178 root       0 -20       0      0      0 I  0.0  0.0   0:00.00 crypto                                                                   
+  179 root       0 -20       0      0      0 I  0.0  0.0   0:00.00 kintegrityd                                                              
+  181 root       0 -20       0      0      0 I  0.0  0.0   0:00.00 kblockd                                                                  
+  534 root       0 -20       0      0      0 I  0.0  0.0   0:00.00 md                                                                       
+  537 root       0 -20       0      0      0 I  0.0  0.0   0:00.00 edac-poller                                                              
+  542 root       0 -20       0      0      0 I  0.0  0.0   0:00.00 watchdogd                                                                
+  683 root      20   0       0      0      0 S  0.0  0.0   0:00.01 kauditd                                                                  
+  689 root      20   0       0      0      0 S  0.0  0.0   0:00.05 kswapd0                                                                  
+  821 root       0 -20       0      0      0 I  0.0  0.0   0:00.00 kthrotld                                                                 
+  871 root       0 -20       0      0      0 I  0.0  0.0   0:00.00 kstrp                                                                    
+[ec2-user@ip-192-168-3-147 ~]$ history
+    1  elinks
+    2  sudo yum install elinks
+    3  pwd
+    4  ifconfig
+    5  elinks 192.168.3.147
+    6  top
+    7  history
+[ec2-user@ip-192-168-3-147 ~]$ 
+
