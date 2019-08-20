@@ -1,0 +1,140 @@
+
+Agenda : 
+
+1. Database 
+2. DMS 
+3. Route53
+4. S3 
+5. IAM
+
+#------------------------------------------------------------#
+
+1. Database
+
+    1. RDS
+    2. DynamoDB
+    3. ElastiCache
+    4. Neptune
+    5. Amazon Redshift
+    6. Amazon QLDB
+    7. Amazon DocumentDB
+
+
+#------------------------------------------------------------#
+
+1. RDBMS & NoSQL 
+
+1. GadFly
+2. mSQL
+3. MySQL   [Old versions of linux i.e. 4.x / 5.x / 6.x ]
+4. PostgreSQL
+5. Microsoft SQL Server 2000
+6. Informix
+7. Interbase
+8. Oracle
+9. Sybase
+10. mariadb  [>= 7.x ]
+
+Self Managed or Self Hosted Database : 
+OS(Windows|Linux|Unix) ----- mariadb
+
+#------------------------------------------------------------#
+
+Compute ---> EC2 ----> OS : Linux(Amazon Linux) :
+
+RDBM Database : mariadb
+
+[ec2-user@db ~]$ history
+    1  hostname
+    2  ifconfig
+    3  # 172.31.85.177 db.kk.com 
+    4  sudo vi /etc/hosts
+    5  cat /etc/hosts
+    6  history
+
+sudo vim /etc/yum.repos.d/MariaDB.repo
+[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/10.2/centos6-amd64/
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+
+yum update -y 
+
+yum install mariadb* 
+
+[ec2-user@db ~]$ mysql -uroot -predhat@123
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 17
+Server version: 10.2.26-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
++--------------------+
+3 rows in set (0.00 sec)
+
+MariaDB [(none)]> CREATE DATABASE course;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| course             |
+| information_schema |
+| mysql              |
+| performance_schema |
++--------------------+
+4 rows in set (0.01 sec)
+
+MariaDB [(none)]> use course;
+Database changed
+MariaDB [course]> show tables
+    -> ;
+Empty set (0.00 sec)
+
+MariaDB [course]> CREATE TABLE emp(Id INT,NAME VARCHAR(50) ,Gender VARCHAR(50) ,Salary INT,DepartmentId INT);
+Query OK, 0 rows affected (0.01 sec)
+
+MariaDB [course]> select * from course.emp;
+Empty set (0.00 sec)
+
+MariaDB [course]> exit;
+Bye
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'your_password' WITH GRANT OPTION;
+
+/* Create a table under course schema */
+CREATE TABLE `course`.python(Id INT,FNAME VARCHAR(50),LNAME VARCHAR(50),Course VARCHAR(50) ,DOJ DATE,Fee INT);
+
+
+INSERT INTO `course`.python(id,FNAME,LNAME,Course,DOJ,Fee) VALUES (1,'Joel','Kummari','Python','2017-01-20',1000);
+INSERT INTO `course`.python(id,FNAME,LNAME,Course,DOJ,Fee) VALUES (2,'Abile','Kummari','Python','2017-01-20',1000);
+INSERT INTO `course`.python(id,FNAME,LNAME,Course,DOJ,Fee) VALUES (3,'K','Kummari','Python','2017-01-20',1000);
+INSERT INTO `course`.python(id,FNAME,LNAME,Course,DOJ,Fee) VALUES (4,'James','Kummari','Python','2017-01-20',1000);
+INSERT INTO `course`.python(id,FNAME,LNAME,Course,DOJ,Fee) VALUES (5,'Jessi','Kummari','Python','2017-01-20',1000);
+
+create database aws;
+
+CREATE TABLE `aws`.cloud(Id INT,FNAME VARCHAR(50),LNAME VARCHAR(50),Course VARCHAR(50) ,DOJ DATE,Fee INT);
+
+INSERT INTO `aws`.cloud(id,FNAME,LNAME,Course,DOJ,Fee) VALUES (1,'Joel','Kummari','Python','2017-01-20',1000);
+INSERT INTO `aws`.cloud(id,FNAME,LNAME,Course,DOJ,Fee) VALUES (2,'Abile','Kummari','Python','2017-01-20',1000);
+INSERT INTO `aws`.cloud(id,FNAME,LNAME,Course,DOJ,Fee) VALUES (3,'K','Kummari','Python','2017-01-20',1000);
+INSERT INTO `aws`.cloud(id,FNAME,LNAME,Course,DOJ,Fee) VALUES (4,'James','Kummari','Python','2017-01-20',1000);
+INSERT INTO `aws`.cloud(id,FNAME,LNAME,Course,DOJ,Fee) VALUES (5,'Jessi','Kummari','Python','2017-01-20',1000);
+
+select * from aws.cloud;
+
+
+mariadbrds.ccog9dntthgl.us-east-1.rds.amazonaws.com
+mariadbrds.ccog9dntthgl.us-east-1.rds.amazonaws.com
