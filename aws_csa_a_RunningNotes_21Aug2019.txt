@@ -1,0 +1,43 @@
+
+STEP-1 : Hosted Zone Part of Route53 
+
+Domain Name : ckk.cloud 
+
+STEP-2 : 
+
+ckk.cloud ----- A ---- S3 
+
+SSL : ACM
+
+Easily Provision, Manage, and Deploy Public and Private SSL/TLS Certificates for with AWS Services 
+and your internal connected resources.
+
+
+http://www.ckk.cloud 
+
+http://www.dev.ckk.cloud 
+http://www.tst.ckk.cloud 
+http://www.acc.ckk.cloud 
+http://www.prd.ckk.cloud 
+http://www.ckk.cloud 
+
+https://www.dev.ckk.cloud 
+https://www.tst.ckk.cloud 
+https://www.acc.ckk.cloud 
+https://www.prd.ckk.cloud 
+https://www.ckk.cloud
+
+x86_64-gp2 (ami-0080e4c5bc078760e
+
+
+postfix mail server :
+
+Linux : Software i.e. postfix 
+
+mail.kk.com
+
+or 
+
+smtp.kk.com 
+
+GUI : squaral mail 
