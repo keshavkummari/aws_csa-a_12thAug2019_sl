@@ -10,3 +10,8 @@ unzip *.zip
 cd Biz*
 mv * /var/www/html/
 service httpd start
+
+#------------------------------------------------------#
+Note : For Unmount a shared directory :
+
+# umount -l /var/www/html/
