@@ -1,0 +1,50 @@
+Agenda :
+
+1. CloudWatch
+
+2. X-Ray
+
+3. CloudTrail
+
+4. Other AWS Services
+
+5. S3 
+
+6. 2 Assignments ()
+
+
+# CloudWatch :
+
+1. Standard Level Monitor : For Every 5 Minutes EC2 and give us the detailed details about CPU, etc...
+2. Detailed Monitoring    : For 1 Minute periods (Extra charge)
+
+
+# CloudTrail : 
+
+1. An API logging service
+2. Logs API calls made to AWS 
+3. It does not matter if the API calls from CLI, SDK, or AWS MGMT CONSOLE
+4. All created logs are placed into a designated S3 bucket.
+    - Cross-Account buckets for multiple accounts
+    - Limit access to logs 
+    - Encypted
+5. CloudTrail logs help when addressing security concerns, by allowing you to view what actions users on your AWS accounts
+have performed.
+6. AWS is just API service - CloudTrail can log every configuration changes in your account.
+
+
+CloudWatch :
+
+- Sends CloudTrail events to CloudWatch logs
+- Defined custom metrics and alarms:
+    1. Security Groups 
+    2. NACL changes
+    3. VPC Changes 
+    4. Failed Console Login Attempts
+    5. Failed API Authorizations
+    6. IAM Changes 
+
+
+
+
+

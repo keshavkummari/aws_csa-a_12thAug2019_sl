@@ -1,0 +1,14 @@
+
+
+Task-0 :  
+1. Configure a Static Website to Display "Welcome to Server/Site-1" directly from an S3 bucket.
+2. This site should be accessible from http://site1.keshavkummari.com
+3. Configure for http access only
+4. Website should be accessible from only your IPAddress and My IP(183.83.199.84)
+
+Task-1 :
+1. Configure a static website to display "Welcome to Server/Site-2".
+2. User ELB
+3. Always two healthy EC2 instances at all the time.
+4. Website content should be fetched from S3 bucket and use role-based permissions.
+5. Website should be accessible from only your IPAddress and My IP(183.83.199.84)
