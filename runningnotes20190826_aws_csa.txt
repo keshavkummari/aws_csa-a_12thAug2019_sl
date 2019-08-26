@@ -1,0 +1,68 @@
+
+Agenda :
+
+1. Create an Amazon Machine Image
+
+#!/bin/bash
+cd /opt/
+yum install wget* curl* vim* unzip* -y
+yum update -y
+wget https://www.free-css.com/assets/files/free-css-templates/download/page231/bizexpress-v1.0.1.zip
+unzip *.zip
+cd Biz*
+yum install http* --skip-broken -y
+mv * /var/www/html/
+systemctl enable httpd.service
+systemctl start httpd.service
+#service httpd start
+
+2. Workspaces
+
+3. CLI
+
+4. Application Services
+  1. Elastic Transcoder
+  2. SNS
+
+4. Trusted Advisor
+
+5. Exam Preparation
+
+STEP-1 : VPC Creation 
+
+# aws ec2 create-vpc --cidr-block 10.0.0.0/16 --output text | awk '{print $NF}' | xargs aws ec2 create-tags --tags Key=Name,Value=azure_vpc --resources
+
+# aws ec2 create-vpc --cidr-block 10.0.0.0/16 --output text
+
+# aws ec2 create-tags --tags Key=Name,Value=azure_vpc
+
+# aws ec2 create-tags --tags Key=Name,Value=azure_vpc --resources vpc-0981674b0f859394e
+
+STEP-2 : IGW Creation
+
+# aws ec2 describe-internet-gateways
+
+# aws ec2 create-internet-gateway
+
+# aws ec2 create-tags --tags Key=Name,Value=azure_igw --resources igw-04a318a5f0c2a9204
+
+STEP-3 : Attach IGW to VPC :
+
+# aws ec2 attach-internet-gateway --vpc-id "vpc-0981674b0f859394e" --internet-gateway-id "igw-04a318a5f0c2a9204"
+# aws ec2 describe-internet-gateways
+
+STEP-4 : Create RouteTables :
+
+# aws ec2 create-route-table --vpc-id "vpc-0981674b0f859394e"
+# aws ec2 create-route-table --vpc-id "vpc-0981674b0f859394e"
+
+# aws ec2 create-tags --tags Key=Name,Value=azure_rtb_public --resources rtb-0212535f559f5bf60
+
+# aws ec2 create-tags --tags Key=Name,Value=azure_rtb_private --resources rtb-05290cd2abff0aed6
+
+
+Cleanup:
+aws ec2 detach-internet-gateway --internet-gateway-id "igw-04a318a5f0c2a9204" --vpc-id "vpc-0981674b0f859394e"
+
+aws ec2 delete-internet-gateway --internet-gateway-id "igw-04a318a5f0c2a9204"
+
